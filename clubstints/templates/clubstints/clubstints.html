@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en:US">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Afrothlete</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'clubstints/clubstints.css' %}"/>
+</head>
+<header>
+       <p> AFROTHLETE </p>
+</header>
+<body>
+<p> Afrothlete is a Django profiler and tracker of a group of 20 African soccer players in Europe and the Middle East. Afrothlete tracks the stints of these players at their current clubs.</p>
+<table> 
+    <tr>
+        <td> Name </td>
+        <td class = 'teamDetail'> Nationality </td>
+        <td class = 'teamDetail'> League </td>
+        <td class = 'teamDetail'> Club </td>
+        <td> Length of Stint at Current Club </td>
+    </tr> 
+    {% for v in combined_player_records.values %} 
+    <tr>
+        <td class = 'identity'> 
+        {% load static %}
+        {% with image_location=v.image_location alt_attribute=v.playerName %}
+        <img src = "{% static image_location %}" alt = "player's photo">
+        {% endwith %}
+        <p> {{ v.player_name }} </p>
+        </td>
+        <td class = 'teamDetail'> {{ v.player_nationality }} </td>
+        <td class = 'teamDetail'> {{ v.current_league }} </td>
+        <td class = 'teamDetail'> {{ v.current_club }} </td>
+        {% load time_elapsed %}
+        <td> {{ v.current_contract_date|time_at_club }} </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+<footer>
+    <p> Afrothlete does not hold the copyrights to the players' images. </p>
+</footer>
+</html>
