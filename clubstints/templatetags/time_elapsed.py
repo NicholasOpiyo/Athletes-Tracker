@@ -39,8 +39,9 @@ def time_at_club(value):
     else:
         days_elapsed = f'{days_spent} day'
     
-    #no zero
-    if (years_spent > 0 and months_elapsed != 0 and days_elapsed != 0):
+    # no zero
+    # Sep 11 - fixed bug that output '0 month': changed 'months_elapsed' condition variable to 'months_spent'
+    if (years_spent != 0 and months_spent != 0 and days_elapsed != 0):  
         time_spent = f'{years_elapsed}, {months_elapsed}, and {days_elapsed}'
 
     #single zero
