@@ -12,9 +12,9 @@ def player_club_stint(request):
     player_other_name = [player.player_last_name for player in profiled_players]
     for g, l in zip(player_initial_name, player_other_name):
         if g == 'mbala' or g == 'nicholas':
-           path_to_image = "clubStints/images/" + g + "_" + l + ".png"
+           path_to_image = "clubstints/images/" + g + "_" + l + ".png"
         else:
-            path_to_image = "clubStints/images/" + g + "_" + l + ".jpg"
+            path_to_image = "clubstints/images/" + g + "_" + l + ".jpg"
         image_paths.append(str(path_to_image))  
     
     #dictionaries of records
